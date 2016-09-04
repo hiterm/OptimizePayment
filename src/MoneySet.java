@@ -1,11 +1,8 @@
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.IntConsumer;
 import java.util.function.IntSupplier;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.RestoreAction;
 
 public class MoneySet {
 
@@ -94,7 +91,7 @@ public class MoneySet {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        
+
         int[] arr = MoneySet.getFaceAmountArray();
         List<IntSupplier> list = this.getGetterList();
         for (int i = 0; i < arr.length; i++) {
@@ -134,7 +131,7 @@ public class MoneySet {
         Collections.reverse(list);
         return list;
     }
-    
+
     // getterの入ったリストを返す
     public List<IntSupplier> getGetterList() {
         List<IntSupplier> list = new ArrayList<>();
@@ -151,7 +148,7 @@ public class MoneySet {
 
         return list;
     }
-    
+
     public List<IntSupplier> getReversedGetterList() {
         List<IntSupplier> list = this.getGetterList();
         Collections.reverse(list);
@@ -184,6 +181,24 @@ public class MoneySet {
         }
 
         return result;
+    }
+
+    // thisにaddendを足す
+    // コインやお札の枚数を足すだけ
+    public void add(MoneySet addend) {
+        List<IntSupplier> thisGetterList = this.getGetterList();
+        List<IntSupplier> addendGetterList = addend.getGetterList();
+        List<IntConsumer> thisSetterList = this.getSetterList();
+
+        for (int i = 0; i < thisGetterList.size(); i++) {
+            int sum = thisGetterList.get(i).getAsInt() + addendGetterList.get(i).getAsInt();
+            thisSetterList.get(i).accept(sum);
+        }
+    }
+
+    // 最適化したものを返す（例：1円玉7枚 -> 1円玉2枚 + 5円玉1枚）
+    public MoneySet getOptimizedSet() {
+        return MoneySet.valueOf(this.getAmount());
     }
 
     // TODO
