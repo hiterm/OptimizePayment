@@ -8,5 +8,6 @@ public class Main {
         IntSupplier func;
         func = set::getAmount;
         System.out.println(func.getAsInt());
+        System.out.println(set.toString());
     }
 }

@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.function.IntConsumer;
+import java.util.function.IntSupplier;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -92,7 +93,16 @@ public class MoneySet {
 
     @Override
     public String toString() {
-        StringBuilder sb;
+        StringBuilder sb = new StringBuilder();
+        
+        int[] arr = MoneySet.getFaceAmountArray();
+        List<IntSupplier> list = this.getGetterList();
+        for (int i = 0; i < arr.length; i++) {
+            sb.append(arr[i]);
+            sb.append(": ");
+            sb.append(list.get(i).getAsInt());
+            sb.append(", ");
+        }
 
         return sb.toString();
     }
@@ -121,6 +131,29 @@ public class MoneySet {
 
     public List<IntConsumer> getReversedSetterList() {
         List<IntConsumer> list = this.getSetterList();
+        Collections.reverse(list);
+        return list;
+    }
+    
+    // setterの入ったリストを返す
+    public List<IntSupplier> getGetterList() {
+        List<IntSupplier> list = new ArrayList<>();
+
+        list.add(this::getC1);
+        list.add(this::getC5);
+        list.add(this::getC10);
+        list.add(this::getC50);
+        list.add(this::getC100);
+        list.add(this::getC500);
+        list.add(this::getB1000);
+        list.add(this::getB5000);
+        list.add(this::getB10000);
+
+        return list;
+    }
+    
+    public List<IntSupplier> getReversedGetterList() {
+        List<IntSupplier> list = this.getGetterList();
         Collections.reverse(list);
         return list;
     }
