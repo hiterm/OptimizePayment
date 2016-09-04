@@ -135,7 +135,7 @@ public class MoneySet {
         return list;
     }
     
-    // setterの入ったリストを返す
+    // getterの入ったリストを返す
     public List<IntSupplier> getGetterList() {
         List<IntSupplier> list = new ArrayList<>();
 
