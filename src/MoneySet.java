@@ -108,7 +108,7 @@ public class MoneySet {
 	}
 	
 	public static int[] getReversedFaceAmountArray() {
-		int[] arr = {10000, 5000, 1000, 100, 50, 10, 5, 1};
+		int[] arr = {10000, 5000, 1000, 500, 100, 50, 10, 5, 1};
 		return arr;
 	}
 	
@@ -116,15 +116,16 @@ public class MoneySet {
 	public static MoneySet valueOf(int n){
 		MoneySet result = new MoneySet();
 		
-		List<IntConsumer> list = result.getSetterList();
+		int[] faceAmountArr = MoneySet.getReversedFaceAmountArray();
+		List<IntConsumer> setterList = result.getReversedSetterList();
 		
 		int rest = n;
-		int tmp = rest / 10000;
-		result.setB10000(tmp);
-		rest = rest % 10000;
-		tmp = rest / 5000;
-		result.setB5000(tmp);
-		rest = rest % 5000;
+		for (int i = 0; i < faceAmountArr.length; i++) {
+			int tmp = rest / faceAmountArr[i];	// 枚数を計算
+			setterList.get(i).accept(tmp);		// setする
+			rest = rest % faceAmountArr[i];
+		}
+
 		return result;
 	}
 	
