@@ -169,7 +169,7 @@ public class MoneySet {
         return arr;
     }
 
-    // TODO
+    // intからそのamountを持つMoneySetを作る
     public static MoneySet valueOf(int n) {
         MoneySet result = new MoneySet();
 
