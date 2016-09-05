@@ -1,4 +1,4 @@
-public class Main {
+public class Sample {
     public static void main(String[] args) {
         MoneySet set = MoneySet.valueOf(1448);
         int payment = 694;
