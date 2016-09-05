@@ -262,41 +262,6 @@ public class MoneySet {
         result.setB10000(rest / 10000);
 
         return result;
-
-//        int rest = payment;
-//        int n = thisGetterList.size() / 2;
-//        for (int i = 0; i < n; i++) {
-//            int numOfThis1 = thisGetterList.get(2*i).getAsInt();  // 1, 10, 100,...の枚数
-//            int numOfThis5 = thisGetterList.get(2*i + 1).getAsInt();  // 5, 50,...の枚数
-//            int currentUnit = faceAmountArr[2 * i];                 // 現在作業している位
-//
-//            int tmp = rest % (10 * currentUnit) / currentUnit;
-//            if ((tmp < 5 && tmp <= numOfThis1) || (tmp >= 5 && tmp <= numOfThis1 + 5 * numOfThis5)) {
-//                result.add(MoneySet.valueOf(currentUnit * tmp));
-//                rest -= currentUnit * tmp;
-//            } else if (tmp > 5 && tmp - 5 <= numOfThis1) {
-//                result.add(MoneySet.valueOf(currentUnit * (tmp - 5)));
-//                rest += currentUnit * (10 - tmp);
-//            } else {
-//                rest += currentUnit * (10 - tmp);
-//            }
-//        }
-//
-//        result.setB10000(rest / 10000); // 残りは1万円冊で払う
-//
-//        return result;
-
-//        int tmp = rest % 10;
-//        if (tmp <= c1 + 5 * c5) {
-//            result.add(MoneySet.valueOf(tmp));
-//            rest -= tmp;
-//        } else if (tmp > 5 && tmp - 5 < c1) {
-//            result.add(MoneySet.valueOf(tmp - 5));
-//            rest += 10 - tmp;   // お釣りをもらって繰上げ
-//        } else {
-//            rest += 10 - tmp;   // お釣りをもらって繰上げ
-//        }
-//        return result;
     }
 
 }
