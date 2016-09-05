@@ -6,7 +6,7 @@ public class Sample {
 
         System.out.println("財布の中身: " + set.getAmount());
         System.out.println("代金: " + payment);
-        System.out.println("支払い: " + result.toShortString());
+        System.out.println("支払い: " + result.getAmount());
         System.out.println("おつり: " + (result.getAmount() - payment));
     }
 }
