@@ -6,7 +6,11 @@ public class Sample {
 
         System.out.println("財布の中身: " + wallet.getAmount());
         System.out.println("代金: " + payment);
-        System.out.println("支払い: " + result.getAmount());
-        System.out.println("おつり: " + (result.getAmount() - payment));
+        if (result != null) {
+            System.out.println("支払い: " + result.getAmount());
+            System.out.println("おつり: " + (result.getAmount() - payment));
+        } else {
+            System.out.println("お金が足りません");
+        }
     }
 }
