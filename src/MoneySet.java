@@ -105,8 +105,13 @@ public class MoneySet {
     }
 
     public int getAmount() {
-        return c1 + 5 * c5 + 10 * c10 + 50 * c50 + 100 * c100 + 500 * c500 + 1000 * b1000 + 5000 * b5000
-                + 10000 * b10000;
+        int amount = 0;
+        List<IntSupplier> list = this.getGetterList();
+        int[] arr = MoneySet.getFaceAmountArray();
+        for (int i = 0; i < list.size(); i++) {
+            amount += arr[i] * list.get(i).getAsInt();
+        }
+        return amount;
     }
 
     // setterの入ったリストを返す
