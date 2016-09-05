@@ -249,16 +249,16 @@ public class MoneySet {
             int nextFace = faceAmountArr[i + 1];
             IntConsumer currentResultSetter = resultSetterList.get(i);
 
-            int tmp = rest % nextFace;
-            if (tmp <= currentFace * currentNum) {
-                currentResultSetter.accept(tmp / currentFace);
-                rest -= tmp;
-            } else {
-                rest += nextFace - tmp;     // お釣りをもらって繰上げ
+            int currentPartOfPayment = rest % nextFace;
+            if (currentPartOfPayment <= currentFace * currentNum) {     // 支払えるとき
+                currentResultSetter.accept(currentPartOfPayment / currentFace);
+                rest -= currentPartOfPayment;               // 支払った分は除く
+            } else {                                        // 支払えないとき
+                rest += nextFace - currentPartOfPayment;    // お釣りをもらって繰上げ
             }
         }
 
-        result.setB10000(rest / 10000);
+        result.setB10000(rest / 10000);     // 10000は別に処理
 
         return result;
     }
