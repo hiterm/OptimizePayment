@@ -104,6 +104,29 @@ public class MoneySet {
         return sb.toString();
     }
 
+    public String toShortString() {
+        StringBuilder sb = new StringBuilder();
+
+        int[] arr = MoneySet.getFaceAmountArray();
+        List<IntSupplier> list = this.getGetterList();
+        for (int i = 0; i < arr.length; i++) {
+            int numOfCoin = list.get(i).getAsInt();
+            if (numOfCoin > 0) {
+                sb.append(arr[i]);
+                sb.append(": ");
+                sb.append(numOfCoin);
+                sb.append(", ");
+            }
+        }
+
+        String string = sb.toString();
+        if ("".equals(string)) {
+            return "0";
+        } else {
+            return string;
+        }
+    }
+
     public int getAmount() {
         int amount = 0;
         List<IntSupplier> list = this.getGetterList();
