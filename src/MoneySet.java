@@ -245,7 +245,6 @@ public class MoneySet {
         int n = thisGetterList.size();
         for (int i = 0; i < n - 1; i++) {   // 最後の1つ手前までループ
             int currentNum = thisGetterList.get(i).getAsInt();
-            int nextNum = thisGetterList.get(i + 1).getAsInt();
             int currentFace = faceAmountArr[i];
             int nextFace = faceAmountArr[i + 1];
             IntConsumer currentResultSetter = resultSetterList.get(i);
