@@ -96,7 +96,7 @@ public class MoneySet {
         int[] faceAmountArr = MoneySet.getFaceAmountArray();
         int[] numbersOfCoinsArr = this.getNumbersOfCoins();
 
-        for (int i = 0; i < faceAmountArr.length; i++) {
+        for (int i = 0; i < NUMBER_OF_COIN_TYPES; i++) {
             sb.append(faceAmountArr[i]);
             sb.append(": ");
             sb.append(numbersOfCoinsArr[i]);
@@ -112,7 +112,7 @@ public class MoneySet {
         int[] faceAmountArr = MoneySet.getFaceAmountArray();
         int[] numbersOfCoinsArr = this.getNumbersOfCoins();
 
-        for (int i = 0; i < faceAmountArr.length; i++) {
+        for (int i = 0; i < NUMBER_OF_COIN_TYPES; i++) {
             if (numbersOfCoinsArr[i] > 0) {
                 sb.append(faceAmountArr[i]);
                 sb.append(": ");
