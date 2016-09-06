@@ -128,6 +128,21 @@ public class MoneySet {
         }
     }
 
+    public int[] getNumbersOfCoins() {
+        int[] result = new int[NUMBER_OF_COIN_TYPES];
+        result[0] = this.getC1();
+        result[1] = this.getC5();
+        result[2] = this.getC10();
+        result[3] = this.getC50();
+        result[4] = this.getC100();
+        result[5] = this.getC500();
+        result[6] = this.getB1000();
+        result[7] = this.getB5000();
+        result[8] = this.getB10000();
+
+        return result;
+    }
+
     public int getAmount() {
         int amount = 0;
         List<IntSupplier> list = this.getGetterList();
