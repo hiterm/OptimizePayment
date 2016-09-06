@@ -128,6 +128,7 @@ public class MoneySet {
         }
     }
 
+    // コインの数の配列を返す
     public int[] getNumbersOfCoins() {
         int[] result = new int[NUMBER_OF_COIN_TYPES];
         result[0] = this.getC1();
@@ -143,6 +144,7 @@ public class MoneySet {
         return result;
     }
 
+    // コインの数を配列でセットする
     public void setAll(int[] arr) {
         this.setC1(arr[0]);
         this.setC5(arr[1]);
