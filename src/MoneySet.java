@@ -143,6 +143,18 @@ public class MoneySet {
         return result;
     }
 
+    public void setAll(int[] arr) {
+        this.setC1(arr[0]);
+        this.setC5(arr[1]);
+        this.setC10(arr[2]);
+        this.setC50(arr[3]);
+        this.setC100(arr[4]);
+        this.setC500(arr[5]);
+        this.setB1000(arr[6]);
+        this.setB5000(arr[7]);
+        this.setB10000(arr[8]);
+    }
+
     public int getAmount() {
         int amount = 0;
         List<IntSupplier> list = this.getGetterList();
