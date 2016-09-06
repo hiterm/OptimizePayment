@@ -241,15 +241,17 @@ public class MoneySet {
     public static MoneySet valueOf(int n) {
         MoneySet result = new MoneySet();
 
-        int[] faceAmountArr = MoneySet.getReversedFaceAmountArray();
-        List<IntConsumer> setterList = result.getReversedSetterList();
+        int[] faceAmountArr = MoneySet.getFaceAmountArray();
+        int[] setterArr = new int[NUMBER_OF_COIN_TYPES];
 
         int rest = n;
-        for (int i = 0; i < faceAmountArr.length; i++) {
-            int tmp = rest / faceAmountArr[i]; // 枚数を計算
-            setterList.get(i).accept(tmp); // setする
+        for (int i = NUMBER_OF_COIN_TYPES - 1; i >= 0; i--) {
+            int numberOfCoin = rest / faceAmountArr[i]; // 枚数を計算
+            setterArr[i] = numberOfCoin;
             rest = rest % faceAmountArr[i];
         }
+
+        result.setAll(setterArr);
 
         return result;
     }
