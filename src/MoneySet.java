@@ -93,12 +93,13 @@ public class MoneySet {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        int[] arr = MoneySet.getFaceAmountArray();
-        List<IntSupplier> list = this.getGetterList();
-        for (int i = 0; i < arr.length; i++) {
-            sb.append(arr[i]);
+        int[] faceAmountArr = MoneySet.getFaceAmountArray();
+        int[] numbersOfCoinsArr = this.getNumbersOfCoins();
+
+        for (int i = 0; i < faceAmountArr.length; i++) {
+            sb.append(faceAmountArr[i]);
             sb.append(": ");
-            sb.append(list.get(i).getAsInt());
+            sb.append(numbersOfCoinsArr[i]);
             sb.append(", ");
         }
 
