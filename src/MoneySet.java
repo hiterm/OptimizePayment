@@ -6,6 +6,7 @@ import java.util.function.IntSupplier;
 
 public class MoneySet {
 
+    public static final int NUMBER_OF_COIN_TYPES = 9;
     private int c1;
     private int c5;
     private int c10;
