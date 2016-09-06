@@ -171,10 +171,11 @@ public class MoneySet {
 
     public int getAmount() {
         int amount = 0;
-        List<IntSupplier> list = this.getGetterList();
-        int[] arr = MoneySet.getFaceAmountArray();
-        for (int i = 0; i < list.size(); i++) {
-            amount += arr[i] * list.get(i).getAsInt();
+        int[] faceAmountArr = MoneySet.getFaceAmountArray();
+        int[] numbersOfCoins = this.getNumbersOfCoins();
+
+        for (int i = 0; i < NUMBER_OF_COIN_TYPES; i++) {
+            amount += faceAmountArr[i] * numbersOfCoins[i];
         }
         return amount;
     }
