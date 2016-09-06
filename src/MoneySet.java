@@ -109,14 +109,14 @@ public class MoneySet {
     public String toShortString() {
         StringBuilder sb = new StringBuilder();
 
-        int[] arr = MoneySet.getFaceAmountArray();
-        List<IntSupplier> list = this.getGetterList();
-        for (int i = 0; i < arr.length; i++) {
-            int numOfCoin = list.get(i).getAsInt();
-            if (numOfCoin > 0) {
-                sb.append(arr[i]);
+        int[] faceAmountArr = MoneySet.getFaceAmountArray();
+        int[] numbersOfCoinsArr = this.getNumbersOfCoins();
+
+        for (int i = 0; i < faceAmountArr.length; i++) {
+            if (numbersOfCoinsArr[i] > 0) {
+                sb.append(faceAmountArr[i]);
                 sb.append(": ");
-                sb.append(numOfCoin);
+                sb.append(numbersOfCoinsArr[i]);
                 sb.append(", ");
             }
         }
