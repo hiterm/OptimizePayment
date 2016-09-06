@@ -145,6 +145,17 @@ public class MoneySet {
         return result;
     }
 
+    public int[] getReversedNumbersOfCoins() {
+        int[] normal = this.getNumbersOfCoins();
+        int[] reversed = new int[NUMBER_OF_COIN_TYPES];
+
+        for (int i = 0; i < NUMBER_OF_COIN_TYPES; i++) {
+            reversed[i] = normal[NUMBER_OF_COIN_TYPES - 1 - i];
+        }
+
+        return reversed;
+    }
+
     // コインの数を配列でセットする
     public void setAll(int[] arr) {
         this.setC1(arr[0]);
