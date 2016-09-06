@@ -283,21 +283,19 @@ public class MoneySet {
         }
 
         MoneySet result = new MoneySet();
-        List<IntSupplier> thisGetterList = this.getGetterList();
+        int[] thisNumbersOfCoins = this.getNumbersOfCoins();
         int[] faceAmountArr = MoneySet.getFaceAmountArray();
-        List<IntConsumer> resultSetterList = result.getSetterList();
+        int[] setterArr = new int[NUMBER_OF_COIN_TYPES];
 
         int rest = payment;
-        int n = thisGetterList.size();
-        for (int i = 0; i < n - 1; i++) {   // 最後の1つ手前までループ
-            int currentNum = thisGetterList.get(i).getAsInt();
+        for (int i = 0; i < NUMBER_OF_COIN_TYPES - 1; i++) {   // 最後の1つ手前までループ
+            int currentNum = thisNumbersOfCoins[i];
             int currentFace = faceAmountArr[i];
             int nextFace = faceAmountArr[i + 1];
-            IntConsumer currentResultSetter = resultSetterList.get(i);
 
             int currentPartOfPayment = rest % nextFace;
             if (currentPartOfPayment <= currentFace * currentNum) {     // 支払えるとき
-                currentResultSetter.accept(currentPartOfPayment / currentFace);
+                setterArr[i] = currentPartOfPayment / currentFace;
                 rest -= currentPartOfPayment;               // 支払った分は除く
             } else {                                        // 支払えないとき
                 rest += nextFace - currentPartOfPayment;    // お釣りをもらって繰上げ
@@ -305,6 +303,8 @@ public class MoneySet {
         }
 
         result.setB10000(rest / 10000);     // 10000は別に処理
+
+        result.setFromArray(setterArr);
 
         return result;
     }
