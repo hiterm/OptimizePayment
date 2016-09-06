@@ -157,7 +157,7 @@ public class MoneySet {
     }
 
     // コインの数を配列でセットする
-    public void setAll(int[] arr) {
+    public void setFromArray(int[] arr) {
         this.setC1(arr[0]);
         this.setC5(arr[1]);
         this.setC10(arr[2]);
@@ -251,7 +251,7 @@ public class MoneySet {
             rest = rest % faceAmountArr[i];
         }
 
-        result.setAll(setterArr);
+        result.setFromArray(setterArr);
 
         return result;
     }
@@ -267,7 +267,7 @@ public class MoneySet {
             int sum = thisNumbersOfCoins[i] + addendNumbersOfCoins[i];
             setterArr[i] = sum;
         }
-        this.setAll(setterArr);
+        this.setFromArray(setterArr);
     }
 
     // 最適化したものを返す（例：1円玉7枚 -> 1円玉2枚 + 5円玉1枚）
