@@ -259,14 +259,15 @@ public class MoneySet {
     // thisにaddendを足す
     // コインやお札の枚数を足すだけ
     public void add(MoneySet addend) {
-        List<IntSupplier> thisGetterList = this.getGetterList();
-        List<IntSupplier> addendGetterList = addend.getGetterList();
-        List<IntConsumer> thisSetterList = this.getSetterList();
+        int[] thisNumbersOfCoins = this.getNumbersOfCoins();
+        int[] addendNumbersOfCoins = addend.getNumbersOfCoins();
+        int[] setterArr = new int[NUMBER_OF_COIN_TYPES];
 
-        for (int i = 0; i < thisGetterList.size(); i++) {
-            int sum = thisGetterList.get(i).getAsInt() + addendGetterList.get(i).getAsInt();
-            thisSetterList.get(i).accept(sum);
+        for (int i = 0; i < NUMBER_OF_COIN_TYPES; i++) {
+            int sum = thisNumbersOfCoins[i] + addendNumbersOfCoins[i];
+            setterArr[i] = sum;
         }
+        this.setAll(setterArr);
     }
 
     // 最適化したものを返す（例：1円玉7枚 -> 1円玉2枚 + 5円玉1枚）
